@@ -8,6 +8,7 @@ class LocalizationEn extends CustomLocalizations {
 
   @override
   String get light => "Light";
+
   @override
   String get languageEn => "En";
 
@@ -31,4 +32,34 @@ class LocalizationEn extends CustomLocalizations {
 
   @override
   String get signIn => "Sign in";
+
+  @override
+  String get tabHot => 'Hot';
+
+  @override
+  String get tabNew => 'New';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get jump => 'Jump';
+
+  @override
+  String get refresh => 'Pull Refresh';
+
+  @override
+  String get dialogCanncel => 'Canncel';
+
+  @override
+  String get dialogConfirm => 'Confirm';
+
+  @override
+  String get dialogTitle => 'Title';
+
+  @override
+  String get selected => "Selected: ";
+
+  @override
+  String get tip => "Receive parameters: ";
 }

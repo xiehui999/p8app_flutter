@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:p8app_flutter/lang/localizations.dart';
+import 'package:p8app_flutter/pages/list_page.dart';
 import 'package:p8app_flutter/pages/splash_page.dart';
 import 'package:p8app_flutter/setting/setting_options.dart';
 import 'package:p8app_flutter/theme/theme.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
 
   Map<String, WidgetBuilder> _routes = <String, WidgetBuilder>{
     Navigator.defaultRouteName: (context) => new SplashPage(),
+    RefreshControlDemo.routeName: (context) => new RefreshControlDemo(),
   };
 
   @override

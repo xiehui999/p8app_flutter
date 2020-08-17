@@ -42,6 +42,16 @@ abstract class CustomLocalizations {
   String get tabAcademy;
   String get tabMe;
   String get signIn;
+  String get tabNew;
+  String get tabHot;
+  String get test;
+  String get jump;
+  String get refresh;
+  String get dialogTitle;
+  String get dialogCanncel;
+  String get dialogConfirm;
+  String get tip;
+  String get selected;
 }
 
 class _LocalizationsDelegate

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:p8app_flutter/lang/localizations.dart';
+import 'package:p8app_flutter/pages/discover.dart';
 import 'package:p8app_flutter/setting/setting_options.dart';
 
+import 'home_page.dart';
 import 'me.dart';
 
 class HomeTab extends StatefulWidget {
@@ -146,79 +148,78 @@ class _HomeTabState extends State<HomeTab>
 
     return Material(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(CustomLocalizations.of(context).appName),
-          actions: [
-            new PopupMenuButton<ThemeMode>(
-                onSelected: (ThemeMode value) {
-                  SettingOptions.update(
-                      context, options.copyWith(themeMode: value));
-                },
-                icon: Icon(Icons.settings_system_daydream),
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuItem<ThemeMode>>[
-                    PopupMenuItem<ThemeMode>(
-                      value: ThemeMode.light,
-                      child: new Text(CustomLocalizations.of(context).light),
-                    ),
-                    PopupMenuItem<ThemeMode>(
-                      value: ThemeMode.dark,
-                      child: new Text(CustomLocalizations.of(context).dark),
-                    )
-                  ];
-                }),
-            new PopupMenuButton<Locale>(
-                onSelected: (Locale value) {
-                  SettingOptions.update(
-                    context,
-                    options.copyWith(locale: value),
-                  );
-                },
-                icon: Icon(Icons.language_sharp),
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuItem<Locale>>[
-                    PopupMenuItem<Locale>(
-                      value: Locale('en', 'CH'),
-                      child:
-                          new Text(CustomLocalizations.of(context).languageEn),
-                    ),
-                    PopupMenuItem<Locale>(
-                      value: Locale('zh', 'CH'),
-                      child:
-                          new Text(CustomLocalizations.of(context).languageZn),
-                    )
-                  ];
-                }),
-            new PopupMenuButton<BottomNavigationBarType>(
-                onSelected: (BottomNavigationBarType value) {
-              setState(() {
-                _type = value;
-              });
-            }, itemBuilder: (BuildContext context) {
-              return <PopupMenuItem<BottomNavigationBarType>>[
-                PopupMenuItem<BottomNavigationBarType>(
-                  value: BottomNavigationBarType.fixed,
-                  child: new Text('Fixed'),
-                ),
-                PopupMenuItem<BottomNavigationBarType>(
-                  value: BottomNavigationBarType.shifting,
-                  child: new Text('Shifting'),
-                )
-              ];
-            })
-          ],
-        ),
+        appBar: _currentIndex <= 1
+            ? null
+            : AppBar(
+                title: Text(CustomLocalizations.of(context).appName),
+                actions: [
+                  new PopupMenuButton<ThemeMode>(
+                      onSelected: (ThemeMode value) {
+                        SettingOptions.update(
+                            context, options.copyWith(themeMode: value));
+                      },
+                      icon: Icon(Icons.settings_system_daydream),
+                      itemBuilder: (BuildContext context) {
+                        return <PopupMenuItem<ThemeMode>>[
+                          PopupMenuItem<ThemeMode>(
+                            value: ThemeMode.light,
+                            child:
+                                new Text(CustomLocalizations.of(context).light),
+                          ),
+                          PopupMenuItem<ThemeMode>(
+                            value: ThemeMode.dark,
+                            child:
+                                new Text(CustomLocalizations.of(context).dark),
+                          )
+                        ];
+                      }),
+                  new PopupMenuButton<Locale>(
+                      onSelected: (Locale value) {
+                        SettingOptions.update(
+                          context,
+                          options.copyWith(locale: value),
+                        );
+                      },
+                      icon: Icon(Icons.language_sharp),
+                      itemBuilder: (BuildContext context) {
+                        return <PopupMenuItem<Locale>>[
+                          PopupMenuItem<Locale>(
+                            value: Locale('en', 'CH'),
+                            child: new Text(
+                                CustomLocalizations.of(context).languageEn),
+                          ),
+                          PopupMenuItem<Locale>(
+                            value: Locale('zh', 'CH'),
+                            child: new Text(
+                                CustomLocalizations.of(context).languageZn),
+                          )
+                        ];
+                      }),
+                  new PopupMenuButton<BottomNavigationBarType>(
+                      onSelected: (BottomNavigationBarType value) {
+                    setState(() {
+                      _type = value;
+                    });
+                  }, itemBuilder: (BuildContext context) {
+                    return <PopupMenuItem<BottomNavigationBarType>>[
+                      PopupMenuItem<BottomNavigationBarType>(
+                        value: BottomNavigationBarType.fixed,
+                        child: new Text('Fixed'),
+                      ),
+                      PopupMenuItem<BottomNavigationBarType>(
+                        value: BottomNavigationBarType.shifting,
+                        child: new Text('Shifting'),
+                      )
+                    ];
+                  })
+                ],
+              ),
         body: IndexedStack(
           children: [
             Center(
-              child: Container(
-                color: isDark ? Colors.white : Color(0xff202124),
-                child: Text('1111'),
-              ),
+              child: HomePage(),
             ),
-            Center(
-              child: Text('1111'),
-            ),
+            Center(child: Discover()),
             Center(
               child: Text('1111'),
             ),
